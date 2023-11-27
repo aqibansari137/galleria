@@ -1,0 +1,120 @@
+.comp-container {
+    color: #fff;
+}
+
+.register-form {
+    position: absolute;
+    left: 110%;
+    top: 45%;
+    transform: translatey(-45%);
+    transition: left 2s ease;
+}
+
+.reg-slide {
+    left: 58%;
+}
+
+.register-form::before {
+    content: "";
+    display: block;
+    height: 270.5px;
+    width: 2px;
+    background: #fff;
+    position: absolute;
+    left: -135px;
+    top: 86px;
+}
+
+.left-col .login-form form,
+.register-form form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 184px;
+    padding: 30px 20px;
+    justify-content: space-between;
+    box-shadow: 0 0 8px 0 black;
+    border-radius: 5px;
+    background: #343a40;
+}
+
+.register-form form {
+    height: 340px;
+}
+
+.middle-col p {
+    width: 500px;
+    text-align: justify;
+}
+
+.middle-col {
+    margin-top: 75px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #ecf6ede6;
+}
+
+input::placeholder {
+    color: #000;
+}
+
+.login-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translatey(-49%);
+    transition: left 2s ease;
+}
+
+.log-slide {
+    left: -50%;
+}
+
+.left-col {
+    border-right: 2px solid;
+    height: 270px;
+}
+
+.left-col,
+.middle-col {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form h1,
+.register-form h1 {
+    position: relative
+}
+
+.login-form h1::before,
+.register-form h1::before {
+    content: "";
+    display: inline-block;
+    background: rgb(81, 166, 60);
+    width: 120px;
+    height: 5px;
+    position: absolute;
+    margin-right: 5px;
+    z-index: -1;
+    left: 3px;
+    bottom: 1px;
+    border-radius: 0 10px 10px 0;
+}
+
+.register-form h1 {
+    position: relative;
+}
+
+.register-form h1::before {
+    width: 170px;
+    background: rgb(166 98 60);
+}

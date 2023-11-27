@@ -1,0 +1,26 @@
+.alert-wrapper .display-alert {
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    transform: translatex(-50%);
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    min-width: 500px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 0 5px 0;
+    transition: top 1s ease;
+}
+
+.alert-success {
+    background: #84cc84;
+}
+
+.alert-error {
+    background: #cc8484;
+}
+
+.show-alert {
+    top: 0 !important;
+}

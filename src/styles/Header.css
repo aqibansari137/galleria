@@ -1,0 +1,64 @@
+.header-container {
+    padding: 12px 120px;
+    box-shadow: 0 0 3px 0;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header-wrapper p {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 36px;
+    border-bottom: 5px solid rgb(81, 166, 60);
+    border-radius: 15px;
+}
+
+.green-text {
+    color: #59ff59;
+}
+
+.userLogin button {
+    position: absolute;
+    right: 140px;
+    top: 25px;
+}
+
+.btn-cls {
+    border: none;
+    padding: 6px 15px;
+    border-radius: 7px;
+    background: #84cc84;
+    color: #474747;
+}
+
+.btn-cls:hover {
+    background: #68b368bf;
+    color: white;
+}
+
+.btn-red {
+    background: #b57d7d;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background: #b36868bf;
+}
+
+.btn-black {
+    background: #343a40;
+    color: #fff;
+}
+
+.btn-black:hover {
+    background: #020202;
+    color: lightgray;
+}
+
+button:disabled,
+button[disabled]:hover {
+    background-color: grey;
+}
