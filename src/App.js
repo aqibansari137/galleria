@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
 import Login from './components/Login';
@@ -10,6 +11,25 @@ function App() {
   const [alertMsg, setAlertMsg] = useState("");
   const [alertType, setAlertType] = useState("alert-success");
   const [headBtnTxt, setHeadBtnTxt] = useState("Register");
+
+  const setCookieWithTimer = (cookieName,cookieValue,cookieExpiry) => {
+    const d = new Date();
+    d.setTime(d.getTime()+cookieExpiry*1000);
+    const expiry = "expires=" + d.toUTCString();
+    document.cookie = cookieName + "=" + cookieValue + ";" + expiry + ";path=/";
+  }
+  const getCookie = (cookieName) => {
+    const name = cookieName + "=";
+    const decodeCookie = decodeURIComponent(document.cookie);
+    const cookieArr = decodeCookie.split(";");
+    for(let i=0;i<cookieArr.length;i++){
+      let cookie = cookieArr[i].trim();
+      if(cookie.indexOf(name) === 0){
+        return cookie.substring(name.length,cookie.length);
+      }
+    }
+    return null;
+  }
 
   const showAlert = (msg, type) => {
     setAlertMsg(msg)
@@ -26,10 +46,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Alert message={alertMsg} type={alertType} />
-        <Header headBtnTxt={headBtnTxt} setHeadBtnTxt={setHeadBtnTxt} showAlert={showAlert} />
+        <Header headBtnTxt={headBtnTxt} setHeadBtnTxt={setHeadBtnTxt} showAlert={showAlert} setCookieWithTimer={setCookieWithTimer}/>
         <Routes>
-          <Route path='/' element={<Login showAlert={showAlert} setHeadBtnTxt={setHeadBtnTxt} />} exact />
-          <Route path='/home' element={<Dashboard />} exact />
+          <Route path='/' element={<Login showAlert={showAlert} setHeadBtnTxt={setHeadBtnTxt} setCookieWithTimer={setCookieWithTimer} />} exact />
+          <Route path='/home' element={<Dashboard getCookie={getCookie} setHeadBtnTxt={setHeadBtnTxt}/>} exact />
         </Routes>
       </BrowserRouter>
     </div>

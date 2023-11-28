@@ -1,8 +1,9 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import cloverIcon from '../assets/clover-icon.png'
 import '../styles/Header.css'
 
-const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert }) => {
+const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert, setCookieWithTimer }) => {
 
     const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert }) => {
         else if (headBtnTxt === "Log Out") {
             setHeadBtnTxt("Register");
             showAlert("Logged out Successfully!", "success");
+            setCookieWithTimer("isLoggedIn",false,1);
             navigate("/");
         }
     }

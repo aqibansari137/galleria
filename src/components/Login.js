@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Login.css'
 import { useNavigate } from 'react-router-dom';
-const Login = ({ showAlert, setHeadBtnTxt }) => {
+const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [dob, setDob] = useState("");
@@ -31,24 +31,30 @@ const Login = ({ showAlert, setHeadBtnTxt }) => {
     }
 
     const loginUser = () => {
-        let foundUser = registeredData.find(obj => {
-            return obj.email === email;
-        });
-        if (foundUser) {
-            if (foundUser.password === password) {
-                showAlert("Login Successfull!", "success");
-                clearForm();
-                setHeadBtnTxt("Log Out");
-                navigate("/home");
+        if(email==="" || password === ""){
+            showAlert("Fields can't be empty", "error");
+        }
+        else{
+
+            let foundUser = registeredData.find(obj => {
+                return obj.email === email;
+            });
+            if (foundUser) {
+                if (foundUser.password === password) {
+                    showAlert("Login Successfull!", "success");
+                    clearForm();
+                    setHeadBtnTxt("Log Out");
+                    setCookieWithTimer("isLoggedIn",true,3600);
+                    navigate("/home");
+                }
+                else {
+                    showAlert("Incorrect Password!", "error");
+                }
             }
             else {
-                showAlert("Incorrect Password!", "error");
+                showAlert("User not Registered! Please Register!", "error");
             }
         }
-        else {
-            showAlert("User not Registered! Please Register!", "error");
-        }
-
     }
 
     const registerUser = () => {
