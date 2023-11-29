@@ -16,7 +16,7 @@ body {
   background-size: cover;
   height: 100vh;
   background-image: url("./assets//background.jpg");
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100vw;
 }
 

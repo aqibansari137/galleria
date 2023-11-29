@@ -1,5 +1,9 @@
 .comp-container {
     color: #fff;
+    width: 100vw;
+    height: 80vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .register-form {

@@ -1,0 +1,28 @@
+.album-view-wrapper {
+    display: grid;
+    grid-template-areas:
+        "head head head head head head"
+        "side main main main main main";
+    text-align: center;
+    grid-gap: 10px;
+    margin: 10px 120px;
+}
+
+.sections {
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 3px 0;
+    background: rgba(183, 245, 196, 0.26);
+}
+
+.section-one {
+    grid-area: head;
+}
+
+.section-two {
+    grid-area: side;
+}
+
+.section-three {
+    grid-area: main;
+}

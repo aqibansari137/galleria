@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import cloverIcon from '../assets/clover-icon.png'
 import '../styles/Header.css'
 
-const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert, setCookieWithTimer }) => {
+const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert, setCookieWithTimer, getCookie }) => {
 
     const navigate = useNavigate();
 
@@ -23,14 +23,23 @@ const Header = ({ headBtnTxt, setHeadBtnTxt, showAlert, setCookieWithTimer }) =>
         else if (headBtnTxt === "Log Out") {
             setHeadBtnTxt("Register");
             showAlert("Logged out Successfully!", "success");
-            setCookieWithTimer("isLoggedIn",false,1);
+            setCookieWithTimer("isLoggedIn", false, 0);
+            navigate("/");
+        }
+    }
+    const sendToHome = () => {
+        const myCookieVal = getCookie("isLoggedIn");
+        if (myCookieVal) {
+            navigate("/home");
+        }
+        else {
             navigate("/");
         }
     }
 
     return (
         <div className="header-container">
-            <div className="header-wrapper">
+            <div className="header-wrapper" onClick={sendToHome}>
                 <img src={cloverIcon} alt="logo" width="50px" height="50px" />
                 <p>Galleria</p>
             </div>
