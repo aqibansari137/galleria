@@ -30,11 +30,12 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
         setMobile("")
     }
 
-    const loginUser = () => {
-        if(email==="" || password === ""){
+    const loginUser = (e) => {
+        e.preventDefault();
+        if (email === "" || password === "") {
             showAlert("Fields can't be empty", "error");
         }
-        else{
+        else {
 
             let foundUser = registeredData.find(obj => {
                 return obj.email === email;
@@ -44,7 +45,7 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
                     showAlert("Login Successfull!", "success");
                     clearForm();
                     setHeadBtnTxt("Log Out");
-                    setCookieWithTimer("isLoggedIn",true,3600);
+                    setCookieWithTimer("isLoggedIn", true, 3600);
                     navigate("/home");
                 }
                 else {
@@ -57,7 +58,8 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
         }
     }
 
-    const registerUser = () => {
+    const registerUser = (e) => {
+        e.preventDefault();
         let foundUser = registeredData.find(obj => {
             return obj.email === email;
         });
@@ -82,10 +84,10 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
                 <div className='left-col col'>
                     <div className='login-form'>
                         <h1 className='mb-3'>Login</h1>
-                        <form onSubmit={(e) => { e.preventDefault() }}>
+                        <form onSubmit={loginUser}>
                             <input type="email" placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)} />
                             <input type="password" placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <button className='btn-cls' onClick={loginUser}>Login</button>
+                            <button className='btn-cls'>Login</button>
                         </form>
                     </div>
                 </div>
@@ -98,13 +100,13 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
             <div className='register-wrapper'>
                 <div className='register-form'>
                     <h1 className='mb-3'>Register</h1>
-                    <form onSubmit={(e) => { e.preventDefault() }}>
+                    <form onSubmit={registerUser}>
                         <input type="text" placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)} />
                         <input type="email" placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)} />
                         <input type="number" placeholder='Enter mobile number' value={mobile} onChange={(e) => setMobile(e.target.value)} />
                         <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
                         <input type="password" placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <button className='btn-cls btn-red' onClick={registerUser} disabled={name === "" || email === "" || mobile === "" || dob === "" || password === ""}>Register</button>
+                        <button className='btn-cls btn-red' disabled={name === "" || email === "" || mobile === "" || dob === "" || password === ""}>Register</button>
                     </form>
                 </div>
             </div>

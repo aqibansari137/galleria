@@ -1,8 +1,10 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 .album-view-wrapper {
     display: grid;
     grid-template-areas:
-        "head head head head head head"
-        "side main main main main main";
+        "head"
+        "main";
     text-align: center;
     grid-gap: 10px;
     margin: 10px 120px;
@@ -19,10 +21,32 @@
     grid-area: head;
 }
 
-.section-two {
-    grid-area: side;
-}
-
 .section-three {
     grid-area: main;
+}
+
+.section-one h1 {
+    font-size: 30px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 470px !important;
+}
+
+.bi-arrow-left-short {
+    color: #fff;
+    position: absolute;
+    left: 00;
+    top: -6px;
+    font-size: 50px;
+    box-shadow: 0 0 3px 0 black;
+    width: 100px;
+    cursor: pointer;
+}
+
+.section-one {
+    position: relative;
+    overflow: hidden;
 }
