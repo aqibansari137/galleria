@@ -4,11 +4,8 @@ import Register from './Register';
 import '../styles/Login.css'
 
 const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [dob, setDob] = useState("");
     const [password, setPassword] = useState("");
-    const [mobile, setMobile] = useState("");
     const [registeredData, setRegisteredData] = useState([]);
 
     const navigate = useNavigate();
@@ -26,11 +23,8 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
     }, [registeredData])
 
     const clearForm = () => {
-        setName("")
         setEmail("")
-        setDob("")
         setPassword("")
-        setMobile("")
     }
 
     const loginUser = (e) => {
