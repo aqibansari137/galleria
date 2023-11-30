@@ -19,10 +19,13 @@
 
 .section-one {
     grid-area: head;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-three {
     grid-area: main;
+    position: relative;
 }
 
 .section-one h1 {
@@ -44,9 +47,4 @@
     box-shadow: 0 0 3px 0 black;
     width: 100px;
     cursor: pointer;
-}
-
-.section-one {
-    position: relative;
-    overflow: hidden;
 }

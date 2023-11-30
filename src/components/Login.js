@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/Login.css'
 import { useNavigate } from 'react-router-dom';
+import Register from './Register';
+import '../styles/Login.css'
+
 const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,6 +17,7 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
     useEffect(() => {
         let response = localStorage.getItem("userData") ? localStorage.getItem("userData") : [];
         setRegisteredData(response.length === 0 ? response : JSON.parse(response));
+        document.title = "Galleria"
     }, [])
 
     // Adding data to localstorage
@@ -58,26 +61,6 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
         }
     }
 
-    const registerUser = (e) => {
-        e.preventDefault();
-        let foundUser = registeredData.find(obj => {
-            return obj.email === email;
-        });
-
-        if (foundUser) {
-            showAlert(`Email ${email} Already Registered!`, "error");
-            clearForm();
-        }
-        else {
-            const userDetail = {
-                name, email, mobile, dob, password
-            }
-            setRegisteredData([...registeredData, userDetail])
-            showAlert("Registration Successfull!", "success");
-            clearForm();
-        }
-    }
-
     return (
         <div className='comp-container'>
             <div className='login-wrapper row justify-content-center'>
@@ -98,19 +81,8 @@ const Login = ({ showAlert, setHeadBtnTxt, setCookieWithTimer }) => {
                 </div>
             </div>
             <div className='register-wrapper'>
-                <div className='register-form'>
-                    <h1 className='mb-3'>Register</h1>
-                    <form onSubmit={registerUser}>
-                        <input type="text" placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)} />
-                        <input type="email" placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="number" placeholder='Enter mobile number' value={mobile} onChange={(e) => setMobile(e.target.value)} />
-                        <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
-                        <input type="password" placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <button className='btn-cls btn-red' disabled={name === "" || email === "" || mobile === "" || dob === "" || password === ""}>Register</button>
-                    </form>
-                </div>
+                <Register registeredData={registeredData} setRegisteredData={setRegisteredData} showAlert={showAlert} />
             </div>
-
         </div>
     );
 }

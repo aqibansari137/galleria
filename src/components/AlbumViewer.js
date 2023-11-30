@@ -13,6 +13,7 @@ const AlbumViewer = ({ getCookie, setHeadBtnTxt, showAlert }) => {
 
     useEffect(() => {
         checkCookie();
+        document.title = "Album Image Viewer | Galleria"
     }, [])
 
     useEffect(() => {

@@ -10,6 +10,7 @@ const Dashboard = ({ getCookie, setHeadBtnTxt, showAlert }) => {
 
     useEffect(() => {
         checkCookie();
+        document.title = "Dashboard | Galleria"
     }, [])
 
     useEffect(() => {
