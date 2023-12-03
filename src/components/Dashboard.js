@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/Dashboard.css';
 import albumImg from "../assets/photo-album.png"
 import cloverImg from "../assets/clover-icon.png"
+import loaderGif from "../assets/doggy.gif";
 const Dashboard = ({ getCookie, setHeadBtnTxt, showAlert }) => {
     const [albumData, setAlbumData] = useState([]);
     const navigate = useNavigate();
@@ -58,14 +59,23 @@ const Dashboard = ({ getCookie, setHeadBtnTxt, showAlert }) => {
             </div>
             <div className='dashboard-wrapper'>
                 {
-                    albumData.map((item, index) => {
-                        return <div className='items' key={item[index].id}>
-                            <div className='album-wrapper' onClick={() => navigate(`/view/album/${index}`)}>
-                                <div className='image-content'><img src={albumImg} width="100px" height="100px" alt="album book" /></div>
-                                <div className='title-content'>Album No {index + 1}</div>
+                    albumData.length !== 0 ?
+                        albumData.map((item, index) => {
+                            return <div className='items' key={item[index].id}>
+                                <div className='album-wrapper' onClick={() => navigate(`/view/album/${index}`)}>
+                                    <div className='album-with-img'>
+                                        <div className='image-content bk'><img src={albumImg} width="100px" height="100px" alt="album book" /></div>
+                                        <div className='image-content fr'><img src={item[1].download_url} width="150px" height="100px" alt="album book" /></div>
+                                    </div>
+                                    <div className='title-content'>
+                                        <div>Album No {index + 1}</div>
+                                        <div>Author: {item[1].author}</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    })
+                        })
+                        :
+                        <p className='loader'><img src={loaderGif} alt="loader" /></p>
                 }
             </div>
         </div>

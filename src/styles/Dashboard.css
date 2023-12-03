@@ -53,3 +53,44 @@
     background: rgba(255, 255, 255, 0.25);
     width: 90%;
 }
+
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -60%);
+}
+
+.album-with-img {
+    position: relative;
+}
+
+.album-with-img .image-content.fr img {
+    position: absolute;
+    left: 53.5%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    width: 116px;
+    height: 112px;
+    border-radius: 0 6px 6px 0;
+}
+
+.album-with-img .image-content.bk img {
+    width: 150px;
+    height: 150px;
+}
+
+.dashboard-wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 10px;
+}
+
+.dashboard-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dashboard-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(40, 40, 40, 0.6);
+}
